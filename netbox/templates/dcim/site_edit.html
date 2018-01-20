@@ -1,4 +1,5 @@
 {% extends 'utilities/obj_edit.html' %}
+{% load static from staticfiles %}
 {% load form_helpers %}
 
 {% block form %}
@@ -17,6 +18,20 @@
         <div class="panel-body">
             {% render_field form.tenant_group %}
             {% render_field form.tenant %}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>Topology</strong>
+        </div>
+        <div class="panel-body">
+            <div id="visjsgraph"></div>
+        </div>
+        <div class="panel-footer text-right">
+            <div id="topology_save" class="btn btn-primary btn-xs">
+                <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                Save layout
+            </div>
         </div>
     </div>
     <div class="panel panel-default">
@@ -43,4 +58,13 @@
             {% render_field form.comments %}
         </div>
     </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+var TOPOLOGY_IMG_DIR = "{% static 'img/topology/' %}";
+var SITE_SLUG = "{{ form.slug.value }}"
+</script>
+<script src="{% static 'visjs/vis-network.min.js' %}"></script>
+<script src="{% static 'js/topology.js' %}"></script>
 {% endblock %}

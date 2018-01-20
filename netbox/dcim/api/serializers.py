@@ -480,7 +480,7 @@ class DeviceSerializer(CustomFieldModelSerializer):
         fields = [
             'id', 'name', 'display_name', 'device_type', 'device_role', 'tenant', 'platform', 'serial', 'asset_tag',
             'site', 'rack', 'position', 'face', 'parent_device', 'status', 'primary_ip', 'primary_ip4', 'primary_ip6',
-            'cluster', 'comments', 'custom_fields',
+            'cluster', 'comments', 'coordinates', 'custom_fields',
         ]
 
     def get_parent_device(self, obj):
@@ -500,7 +500,7 @@ class WritableDeviceSerializer(CustomFieldModelSerializer):
         model = Device
         fields = [
             'id', 'name', 'device_type', 'device_role', 'tenant', 'platform', 'serial', 'asset_tag', 'site', 'rack',
-            'position', 'face', 'status', 'primary_ip4', 'primary_ip6', 'cluster', 'comments', 'custom_fields',
+            'position', 'face', 'status', 'primary_ip4', 'primary_ip6', 'cluster', 'comments', 'coordinates', 'custom_fields',
         ]
         validators = []
 

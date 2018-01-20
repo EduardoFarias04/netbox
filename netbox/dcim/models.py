@@ -843,12 +843,13 @@ class Device(CreatedUpdatedModel, CustomFieldModel):
     comments = models.TextField(blank=True)
     custom_field_values = GenericRelation(CustomFieldValue, content_type_field='obj_type', object_id_field='obj_id')
     images = GenericRelation(ImageAttachment)
+    coordinates = models.CharField(max_length=16, blank=True, verbose_name='Topology coordinates')
 
     objects = DeviceManager()
 
     csv_headers = [
         'name', 'device_role', 'tenant', 'manufacturer', 'model_name', 'platform', 'serial', 'asset_tag', 'status',
-        'site', 'rack_group', 'rack_name', 'position', 'face',
+        'site', 'rack_group', 'rack_name', 'position', 'face', 'coordinates',
     ]
 
     class Meta:
