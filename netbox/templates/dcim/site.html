@@ -3,6 +3,10 @@
 {% load tz %}
 {% load helpers %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'visjs/vis-network.min.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="row">
     <div class="col-sm-8 col-md-9">
@@ -134,6 +138,14 @@
                     </td>
                 </tr>
             </table>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Topology</strong>
+            </div>
+            <div class="panel-body">
+                <div id="visjsgraph"></div>
+            </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -304,4 +316,10 @@
 
 {% block javascript %}
 <script src="{% static 'js/graphs.js' %}?v{{ settings.VERSION }}"></script>
+<script>
+var TOPOLOGY_IMG_DIR = "{% static 'img/topology/' %}";
+var SITE_SLUG = "{{ site.slug }}"
+</script>
+<script src="{% static 'visjs/vis-network.min.js' %}"></script>
+<script src="{% static 'js/topology.js' %}"></script>
 {% endblock %}
