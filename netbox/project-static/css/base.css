@@ -434,3 +434,16 @@ td .progress {
 textarea {
     font-family: Consolas, Lucida Console, monospace;
 }
+/* Vis JS hide built-in manipulation panel */
+.vis-edit-mode, .vis-close, .vis-back, .vis-separator-line {
+    display: none !important;
+    background-image: none !important;
+}
+.vis-manipulation {
+    background-color: #fff !important;
+    border: 0 !important;
+}
+/* JQuery hide dialog close button */
+.ui-dialog-titlebar-close {
+    display: none;
+}

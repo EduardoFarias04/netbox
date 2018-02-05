@@ -1,10 +1,5 @@
 {% extends 'utilities/obj_edit.html' %}
-{% load static from staticfiles %}
 {% load form_helpers %}
-
-{% block stylesheet %}
-    <link rel="stylesheet" href="{% static 'visjs/vis-network.min.css' %}">
-{% endblock %}
 
 {% block form %}
     <div class="panel panel-default">
@@ -26,33 +21,6 @@
             {% render_field form.tenant %}
         </div>
     </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <strong>Topology</strong>
-        </div>
-        <div class="panel-body">
-            <div id="visjsgraph"></div>
-        </div>
-        <div class="panel-footer text-right">
-            <div id="topology_delete_edge" class="btn btn-primary btn-xs">
-                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                <span id="topology_delete_edge_label">Delete selected</span>
-            </div>
-            <div id="topology_add_edge" class="btn btn-primary btn-xs">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                <span id="topology_add_edge_label">Add connection</span>
-            </div>
-            <div id="topology_toggle" class="btn btn-primary btn-xs">
-                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-                <span id="topology_toggle_label">Static</span>
-            </div>
-            <div id="topology_save" class="btn btn-primary btn-xs">
-                <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-                Save layout
-            </div>
-        </div>
-    </div>
-
     <div class="panel panel-default">
         <div class="panel-heading"><strong>Contact Info</strong></div>
         <div class="panel-body">
@@ -77,27 +45,4 @@
             {% render_field form.comments %}
         </div>
     </div>
-    <div id="add_interface_dialog" title="Adding a new interface" style="display: none;">
-        <span id="device_A"></span> : <select id="device_A_interfaces"></select><br>
-        <span id="device_B"></span> : <select id="device_B_interfaces"></select><br>
-        <button type="button" class="btn btn-primary" id="add_interface_confirm">Save changes</button>
-    </div>
-
-    <div id="delete_interface_dialog" title="Deleting interface" style="display: none;">
-        You are about to delete interface between
-        <span id="delete_device_A"></span><br>
-        and<br>
-        <span id="delete_device_B"></span><br>
-        <button type="button" class="btn btn-primary" id="delete_interface_confirm">Delete</button>
-    </div>
-
-{% endblock %}
-
-{% block javascript %}
-<script>
-var TOPOLOGY_IMG_DIR = "{% static 'img/topology/' %}";
-var SITE_SLUG = "{{ form.slug.value }}"
-</script>
-<script src="{% static 'visjs/vis-network.min.js' %}"></script>
-<script src="{% static 'js/topology.js' %}"></script>
 {% endblock %}
