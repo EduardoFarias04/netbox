@@ -867,7 +867,6 @@ class Device(CreatedUpdatedModel, CustomFieldModel):
         blank=True,
         null=True
     )
-    coordinates = models.CharField(max_length=32, blank=True, verbose_name='Topology coordinates')
     comments = models.TextField(blank=True)
     custom_field_values = GenericRelation(CustomFieldValue, content_type_field='obj_type', object_id_field='obj_id')
     images = GenericRelation(ImageAttachment)
@@ -876,7 +875,7 @@ class Device(CreatedUpdatedModel, CustomFieldModel):
 
     csv_headers = [
         'name', 'device_role', 'tenant', 'manufacturer', 'model_name', 'platform', 'serial', 'asset_tag', 'status',
-        'site', 'rack_group', 'rack_name', 'position', 'face', 'coordinates',
+        'site', 'rack_group', 'rack_name', 'position', 'face',
     ]
 
     class Meta:
